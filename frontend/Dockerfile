@@ -3,6 +3,8 @@ WORKDIR /app
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend .
+RUN rm -rf node_modules  # Add this line to remove node_modules
+RUN npm install         # Run npm install again to ensure a clean install
 RUN npm run build
 
 FROM nginx:stable-alpine
