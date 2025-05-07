@@ -1,17 +1,19 @@
-version: "3.8"
+version: '3.8'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: .
+      dockerfile: frontend/Dockerfile
     ports:
-      - "3000:3000"
+      - "5713:80"  # Map host port 5713 to container port 80 (Nginx)
     depends_on:
       - backend
-
   backend:
     build:
-      context: ./backend
+      context: .
+      dockerfile: backend/Dockerfile
     ports:
-      - "5000:5000"
+      - "3000:5000"  # Map host port 3000 to container port 5000 (Express)
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
+      # Add any other backend environment variables here

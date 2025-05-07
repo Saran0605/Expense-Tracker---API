@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "serve": "vite preview --port 5713",
+
     "lint": "eslint .",
     "preview": "vite preview"
   },
